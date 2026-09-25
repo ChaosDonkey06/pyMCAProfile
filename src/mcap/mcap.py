@@ -1,5 +1,5 @@
 from scipy.stats import chi2 as qchisq
-from loess_1d import loess_1d
+from loess.loess_1d import loess_1d
 import pandas as pd
 import numpy as np
 
@@ -17,6 +17,7 @@ def fit_wls(x, y, w):
     # residual based variance estimate
     yhat = X @ coef
     resid = (y - yhat) * sw
+
     df = int(np.sum(w > 0) - X.shape[1])
     s2 = float(np.sum(resid**2) / df)
 
